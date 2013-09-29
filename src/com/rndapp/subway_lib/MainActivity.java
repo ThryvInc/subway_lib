@@ -71,25 +71,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.see_map:
-                va.setInAnimation(slideRightIn);
-                va.setOutAnimation(slideRightOut);
-                va.showPrevious();
-                break;
-            case R.id.see_sched:
-                va.setInAnimation(slideLeftIn);
-                va.setOutAnimation(slideLeftOut);
-                va.showNext();
-                break;
-            case R.id.back_to_sched:
-                va.setInAnimation(slideRightIn);
-                va.setOutAnimation(slideRightOut);
-                va.showPrevious();
-                break;
-        }
-    }
+    public void onClick(View v) {}
 
     class ScrollRight implements Animation.AnimationListener {
 
