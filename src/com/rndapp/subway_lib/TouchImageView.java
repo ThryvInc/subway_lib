@@ -32,6 +32,8 @@ public class TouchImageView extends ImageView {
     static final int ZOOM = 3;
     int mode = NONE;
 
+    protected static float DOUBLE_TAP_SCALE_FACTOR = 3;
+
     // Remember some things for zooming
     PointF last = new PointF();
     PointF start = new PointF();
@@ -114,11 +116,11 @@ public class TouchImageView extends ImageView {
                 Log.d("TouchImageView", "double tap heard");
                 PointF curr = new PointF(motionEvent.getX(), motionEvent.getY());
                 if (!lastDTapWasZIn){
-                    (new ScaleListener()).scaleIt(3f,curr.x,curr.y);
+                    (new ScaleListener()).scaleIt(DOUBLE_TAP_SCALE_FACTOR,curr.x,curr.y);
                     lastDTapCenter = curr;
                     lastDTapWasZIn = true;
                 }else {
-                    (new ScaleListener()).scaleIt(.33f,lastDTapCenter.x,lastDTapCenter.y);
+                    (new ScaleListener()).scaleIt(1/DOUBLE_TAP_SCALE_FACTOR,lastDTapCenter.x,lastDTapCenter.y);
                     lastDTapWasZIn = false;
                 }
                 return true;
