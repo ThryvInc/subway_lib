@@ -10,7 +10,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ViewAnimator;
-import com.flurry.android.FlurryAgent;
 
 /**
  * Created with IntelliJ IDEA.
@@ -90,18 +89,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 va.showPrevious();
                 break;
         }
-    }
-
-    @Override
-    protected void onStart(){
-        super.onStart();
-        FlurryAgent.onStartSession(this, "G9S4S9H9JXBK884NW625");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        FlurryAgent.onEndSession(this);
     }
 
     class ScrollRight implements Animation.AnimationListener {
