@@ -11,6 +11,7 @@ apply plugin: 'android-library'
 
 dependencies {
     compile 'com.android.support:support-v4:+'
+    compile fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
 }
 
 android {
@@ -28,6 +29,7 @@ android {
             java.srcDirs = ['src']
             resources.srcDirs = ['src']
             res.srcDirs = ['res']
+	    assets.srcDirs = ['assets']
         }
     }
 }
