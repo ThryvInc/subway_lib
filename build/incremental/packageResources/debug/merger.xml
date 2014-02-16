@@ -2,89 +2,89 @@
 <merger>
 
     <dataSet config="main" >
-        <source path="/Users/eschrock/williamsclass/subway_lib/res" >
+        <source path="/Users/ell/development/subway_lib/res" >
             <file
                 name="push_left_in"
-                path="/Users/eschrock/williamsclass/subway_lib/res/anim/push_left_in.xml"
+                path="/Users/ell/development/subway_lib/res/anim/push_left_in.xml"
                 qualifiers=""
                 type="anim" />
             <file
                 name="push_left_out"
-                path="/Users/eschrock/williamsclass/subway_lib/res/anim/push_left_out.xml"
+                path="/Users/ell/development/subway_lib/res/anim/push_left_out.xml"
                 qualifiers=""
                 type="anim" />
             <file
                 name="push_right_in"
-                path="/Users/eschrock/williamsclass/subway_lib/res/anim/push_right_in.xml"
+                path="/Users/ell/development/subway_lib/res/anim/push_right_in.xml"
                 qualifiers=""
                 type="anim" />
             <file
                 name="push_right_out"
-                path="/Users/eschrock/williamsclass/subway_lib/res/anim/push_right_out.xml"
+                path="/Users/ell/development/subway_lib/res/anim/push_right_out.xml"
                 qualifiers=""
                 type="anim" />
             <file
                 name="slide_left"
-                path="/Users/eschrock/williamsclass/subway_lib/res/anim/slide_left.xml"
+                path="/Users/ell/development/subway_lib/res/anim/slide_left.xml"
                 qualifiers=""
                 type="anim" />
             <file
                 name="slide_right"
-                path="/Users/eschrock/williamsclass/subway_lib/res/anim/slide_right.xml"
+                path="/Users/ell/development/subway_lib/res/anim/slide_right.xml"
                 qualifiers=""
                 type="anim" />
             <file
                 name="app_icon"
-                path="/Users/eschrock/williamsclass/subway_lib/res/drawable/app_icon.png"
+                path="/Users/ell/development/subway_lib/res/drawable/app_icon.png"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="app_icon"
-                path="/Users/eschrock/williamsclass/subway_lib/res/drawable-hdpi/app_icon.png"
+                path="/Users/ell/development/subway_lib/res/drawable-hdpi/app_icon.png"
                 qualifiers="hdpi"
                 type="drawable" />
             <file
                 name="app_icon"
-                path="/Users/eschrock/williamsclass/subway_lib/res/drawable-ldpi/app_icon.png"
+                path="/Users/ell/development/subway_lib/res/drawable-ldpi/app_icon.png"
                 qualifiers="ldpi"
                 type="drawable" />
             <file
                 name="app_icon"
-                path="/Users/eschrock/williamsclass/subway_lib/res/drawable-mdpi/app_icon.png"
+                path="/Users/ell/development/subway_lib/res/drawable-mdpi/app_icon.png"
                 qualifiers="mdpi"
                 type="drawable" />
             <file
                 name="subway"
-                path="/Users/eschrock/williamsclass/subway_lib/res/drawable-nodpi/subway.png"
+                path="/Users/ell/development/subway_lib/res/drawable-nodpi/subway.png"
                 qualifiers="nodpi"
                 type="drawable" />
             <file
                 name="app_icon"
-                path="/Users/eschrock/williamsclass/subway_lib/res/drawable-xhdpi/app_icon.png"
+                path="/Users/ell/development/subway_lib/res/drawable-xhdpi/app_icon.png"
                 qualifiers="xhdpi"
                 type="drawable" />
             <file
                 name="item"
-                path="/Users/eschrock/williamsclass/subway_lib/res/layout/item.xml"
+                path="/Users/ell/development/subway_lib/res/layout/item.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="main"
-                path="/Users/eschrock/williamsclass/subway_lib/res/layout/main.xml"
+                path="/Users/ell/development/subway_lib/res/layout/main.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="notification"
-                path="/Users/eschrock/williamsclass/subway_lib/res/layout/notification.xml"
+                path="/Users/ell/development/subway_lib/res/layout/notification.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="section"
-                path="/Users/eschrock/williamsclass/subway_lib/res/layout/section.xml"
+                path="/Users/ell/development/subway_lib/res/layout/section.xml"
                 qualifiers=""
                 type="layout" />
             <file
-                path="/Users/eschrock/williamsclass/subway_lib/res/values/colors.xml"
+                path="/Users/ell/development/subway_lib/res/values/colors.xml"
                 qualifiers="" >
                 <color name="grey" >#444
                 </color>
@@ -104,7 +104,7 @@
                 </color>
             </file>
             <file
-                path="/Users/eschrock/williamsclass/subway_lib/res/values/strings.xml"
+                path="/Users/ell/development/subway_lib/res/values/strings.xml"
                 qualifiers="" >
                 <string name="app_name" >Boston T Map
                 </string>
@@ -112,7 +112,7 @@
                 </string>
             </file>
             <file
-                path="/Users/eschrock/williamsclass/subway_lib/res/values/styles.xml"
+                path="/Users/ell/development/subway_lib/res/values/styles.xml"
                 qualifiers="" >
 
                 <style
@@ -120,11 +120,11 @@
                     parent="android:Theme.Light" />
             </file>
         </source>
-        <source path="/Users/eschrock/williamsclass/subway_lib/build/res/rs/debug" />
-        <source path="/Users/eschrock/williamsclass/subway_lib/build/res/generated/debug" />
+        <source path="/Users/ell/development/subway_lib/build/res/rs/debug" />
+        <source path="/Users/ell/development/subway_lib/build/res/generated/debug" />
     </dataSet>
     <dataSet config="debug" >
-        <source path="/Users/eschrock/williamsclass/subway_lib/src/debug/res" />
+        <source path="/Users/ell/development/subway_lib/src/debug/res" />
     </dataSet>
 
 </merger>

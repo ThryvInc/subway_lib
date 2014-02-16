@@ -43,4 +43,4 @@
         android:paddingRight="5dp"
 		android:layout_alignBaseline="@id/stop_name" />
 
-</RelativeLayout><!-- From: file:/Users/eschrock/williamsclass/subway_lib/res/layout/item.xml -->
+</RelativeLayout><!-- From: file:/Users/ell/development/subway_lib/res/layout/item.xml -->

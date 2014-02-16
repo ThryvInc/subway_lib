@@ -2,10 +2,10 @@
 <merger>
 
     <dataSet config="main" >
-        <source path="/Users/eschrock/williamsclass/subway_lib/src/main/assets" />
+        <source path="/Users/ell/development/subway_lib/assets" />
     </dataSet>
     <dataSet config="debug" >
-        <source path="/Users/eschrock/williamsclass/subway_lib/src/debug/assets" />
+        <source path="/Users/ell/development/subway_lib/src/debug/assets" />
     </dataSet>
 
 </merger>
