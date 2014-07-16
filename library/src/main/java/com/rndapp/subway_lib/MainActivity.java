@@ -12,9 +12,8 @@ import android.widget.Button;
 import android.widget.Toast;
 import android.widget.ViewAnimator;
 
-import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
+import com.flurry.android.FlurryAgent;
 
 import org.json.JSONObject;
 
@@ -24,7 +23,9 @@ import org.json.JSONObject;
  * Date: 9/29/13
  * Time: 10:23 AM
  */
-public abstract class MainActivity extends Activity implements View.OnClickListener {
+public abstract class MainActivity extends Activity implements
+        View.OnClickListener,
+        LineScheduleLoader.OnLineScheduleLoadedListener {
 
     protected ViewAnimator va;
     protected Animation slideLeftIn;
@@ -37,32 +38,56 @@ public abstract class MainActivity extends Activity implements View.OnClickListe
     // e.g., http://developer.mbta.com/lib/rthr/blue.json
     protected abstract String getLineUrl(Line line);
 
+    // holds the schedule data
     protected JSONObject fetchedData;
 
+    // appears when request is loading schedule
     protected ProgressDialog pd;
 
+    // Used by subprojects in onClick
     protected final void makeRequest(Line line) {
-        // TODO SubwayApplication.getRequestQueue().cancelAll(line);
-        String url = getLineUrl(line);
-        JsonObjectRequest request = new JsonObjectRequest(url, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject jsonObject) {
-                        fetchedData = jsonObject;
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError volleyError) {
-                        fetchedData = null;
-                        Toast.makeText(MainActivity.this,
-                                "Please make sure you are connected to the internet.",
-                                Toast.LENGTH_LONG).show();
-                    }
-                }
-        );
-        request.setTag(line);
-        SubwayApplication.getRequestQueue().add(request);
+        pd = ProgressDialog.show(this, "", "Loading", true, true);
+        LineScheduleLoader.load(this, getLineUrl(line));
+    }
+
+    @Override
+    public void onLineScheduleLoaded(JSONObject jsonObject) {
+        pd.dismiss();
+
+        // presumably a non-null schedule
+        fetchedData = jsonObject;
+
+        // just in case, check for success, then toggle animations
+        if (jsonObject != null) {
+            va.setInAnimation(slideLeftIn);
+            va.setOutAnimation(slideLeftOut);
+            va.showNext();
+        }
+    }
+
+    @Override
+    public void onFailure(VolleyError volleyError) {
+        pd.dismiss();
+        fetchedData = null;
+        Toast.makeText(MainActivity.this, "No Internet Connection.", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        if (id == R.id.see_map) {
+            va.setInAnimation(slideRightIn);
+            va.setOutAnimation(slideRightOut);
+            va.showPrevious();
+        } else if (id == R.id.see_sched) {
+            va.setInAnimation(slideLeftIn);
+            va.setOutAnimation(slideLeftOut);
+            va.showNext();
+        } else if (id == R.id.back_to_sched) {
+            va.setInAnimation(slideRightIn);
+            va.setOutAnimation(slideRightOut);
+            va.showPrevious();
+        }
     }
 
     @Override
@@ -157,6 +182,17 @@ public abstract class MainActivity extends Activity implements View.OnClickListe
             // TODO Auto-generated method stub
 
         }
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FlurryAgent.onStartSession(this, getFlurryApiKey());
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        FlurryAgent.onEndSession(this);
     }
 }
