@@ -17,4 +17,8 @@ public class SubwayApplication extends Application {
         super.onCreate();
         requestQueue = Volley.newRequestQueue(this);
     }
+
+    public static RequestQueue getRequestQueue() {
+        return requestQueue;
+    }
 }

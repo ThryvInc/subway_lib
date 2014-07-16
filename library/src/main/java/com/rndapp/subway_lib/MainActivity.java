@@ -1,7 +1,7 @@
 package com.rndapp.subway_lib;
 
 import android.app.Activity;
-import android.content.Context;
+import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -9,7 +9,14 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.Toast;
 import android.widget.ViewAnimator;
+
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONObject;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,12 +24,46 @@ import android.widget.ViewAnimator;
  * Date: 9/29/13
  * Time: 10:23 AM
  */
-public class MainActivity extends Activity implements View.OnClickListener {
+public abstract class MainActivity extends Activity implements View.OnClickListener {
+
     protected ViewAnimator va;
     protected Animation slideLeftIn;
     protected Animation slideLeftOut;
     protected Animation slideRightIn;
     protected Animation slideRightOut;
+
+    protected abstract String getFlurryApiKey();
+
+    // e.g., http://developer.mbta.com/lib/rthr/blue.json
+    protected abstract String getLineUrl(Line line);
+
+    protected JSONObject fetchedData;
+
+    protected ProgressDialog pd;
+
+    protected final void makeRequest(Line line) {
+        // TODO SubwayApplication.getRequestQueue().cancelAll(line);
+        String url = getLineUrl(line);
+        JsonObjectRequest request = new JsonObjectRequest(url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject jsonObject) {
+                        fetchedData = jsonObject;
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        fetchedData = null;
+                        Toast.makeText(MainActivity.this,
+                                "Please make sure you are connected to the internet.",
+                                Toast.LENGTH_LONG).show();
+                    }
+                }
+        );
+        request.setTag(line);
+        SubwayApplication.getRequestQueue().add(request);
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -66,10 +107,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         slideRightIn = AnimationUtils.loadAnimation(this, R.anim.push_right_in);
         slideRightIn.setAnimationListener(new ScrollRight());
         slideRightOut = AnimationUtils.loadAnimation(this, R.anim.push_right_out);
-    }
-
-    @Override
-    public void onClick(View v) {
     }
 
     class ScrollRight implements Animation.AnimationListener {
