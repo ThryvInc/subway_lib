@@ -10,16 +10,6 @@
         android:name=".SubwayApplication"
         android:icon="@drawable/app_icon">
 
-        <activity android:name=".MainActivity"/>
-
-        <activity
-            android:name="com.rndapp.subway_lib.Notification"
-            android:theme="@android:style/Theme.Dialog"/>
-
-        <activity
-            android:name="com.google.ads.AdActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
-
     </application>
 
 </manifest>
