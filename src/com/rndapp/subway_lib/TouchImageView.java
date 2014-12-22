@@ -235,7 +235,7 @@ public class TouchImageView extends ImageView {
         redundantYSpace /= (float)2;
         redundantXSpace /= (float)2;
 
-        //matrix.setTranslate(redundantXSpace, redundantYSpace);
+        matrix.postTranslate(redundantXSpace, redundantYSpace);
         setImageMatrix(matrix);
         
         origWidth = width - 2 * redundantXSpace;
