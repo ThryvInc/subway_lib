@@ -32,6 +32,7 @@ public class TouchImageView extends ImageView {
     int mode = NONE;
 
     // Remember some things for zooming
+    protected float doubleTapScaleFactor = 3f;
     PointF last = new PointF();
     PointF start = new PointF();
     float minScale = 1f;
@@ -113,11 +114,11 @@ public class TouchImageView extends ImageView {
                 Log.d("TouchImageView", "double tap heard");
                 PointF curr = new PointF(motionEvent.getX(), motionEvent.getY());
                 if (!lastDTapWasZIn){
-                    (new ScaleListener()).scaleIt(getDoubleTapScaleFactor(),curr.x,curr.y);
+                    (new ScaleListener()).scaleIt(doubleTapScaleFactor,curr.x,curr.y);
                     lastDTapCenter = curr;
                     lastDTapWasZIn = true;
                 }else {
-                    (new ScaleListener()).scaleIt(1/getDoubleTapScaleFactor(),lastDTapCenter.x,lastDTapCenter.y);
+                    (new ScaleListener()).scaleIt(1/doubleTapScaleFactor,lastDTapCenter.x,lastDTapCenter.y);
                     lastDTapWasZIn = false;
                 }
                 return true;
@@ -146,8 +147,8 @@ public class TouchImageView extends ImageView {
     	maxScale = x;
     }
 
-    protected float getDoubleTapScaleFactor(){
-        return 3f;
+    protected void setDoubleTapScaleFactor(float scaleFactor){
+        this.doubleTapScaleFactor = scaleFactor;
     }
     
     private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
