@@ -147,7 +147,7 @@ public class TouchImageView extends ImageView {
     	maxScale = x;
     }
 
-    protected void setDoubleTapScaleFactor(float scaleFactor){
+    public void setDoubleTapScaleFactor(float scaleFactor){
         this.doubleTapScaleFactor = scaleFactor;
     }
     
